@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <PackageVersion>0.0.2</PackageVersion>
+        <Authors>Hasmik Harutyunyan, Oleg Konovalov, Vadim Mingazhev, Kirill Taran</Authors>
+        <Description>Common package to work with money: ceiling, formatting, models</Description>
+        <PackageProjectUrl>https://github.com/happy-travel/takeda</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/happy-travel/takeda</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+
+</Project>
