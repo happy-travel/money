@@ -1,11 +1,12 @@
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using HappyTravel.Money.Enums;
 using HappyTravel.Money.Models;
 
 namespace HappyTravel.Money.Helpers
 {
-    public static class MoneyRound
+    public static class MoneyRounder
     {
         public static MoneyAmount Ceil(MoneyAmount moneyAmount) 
             => new MoneyAmount(Ceil(moneyAmount.Amount, moneyAmount.Currency), moneyAmount.Currency);
@@ -30,12 +31,12 @@ namespace HappyTravel.Money.Helpers
             => Math.Round(target, CurrencyDecimalDigits[currency], MidpointRounding.ToZero);
         
         
-        private static readonly Dictionary<Currencies, int> CurrencyDecimalDigits = new Dictionary<Currencies, int>
+        public static readonly ConcurrentDictionary<Currencies, int> CurrencyDecimalDigits = new ConcurrentDictionary<Currencies, int>( new Dictionary<Currencies, int>
         {
             {Currencies.AED, 2},
             {Currencies.EUR, 2},
             {Currencies.SAR, 2},
             {Currencies.USD, 2}
-        };
+        });
     }
 }
