@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
 using HappyTravel.Money.Enums;
+using HappyTravel.Money.Extensions;
 using HappyTravel.Money.Models;
 
 namespace HappyTravel.Money.Helpers
@@ -16,7 +15,7 @@ namespace HappyTravel.Money.Helpers
             => Ceil(target, Enum.Parse<Currencies>(currency));
         
         public static decimal Ceil(decimal target, Currencies currency) 
-            => Math.Round(target, CurrencyDecimalDigits[currency], MidpointRounding.AwayFromZero);
+            => Math.Round(target, currency.GetDecimalDigitsCount(), MidpointRounding.AwayFromZero);
         
         
         public static MoneyAmount Truncate(MoneyAmount moneyAmount) 
@@ -28,15 +27,6 @@ namespace HappyTravel.Money.Helpers
         
         
         public static decimal Truncate(decimal target, Currencies currency) 
-            => Math.Round(target, CurrencyDecimalDigits[currency], MidpointRounding.ToZero);
-        
-        
-        public static readonly ConcurrentDictionary<Currencies, int> CurrencyDecimalDigits = new ConcurrentDictionary<Currencies, int>( new Dictionary<Currencies, int>
-        {
-            {Currencies.AED, 2},
-            {Currencies.EUR, 2},
-            {Currencies.SAR, 2},
-            {Currencies.USD, 2}
-        });
+            => Math.Round(target, currency.GetDecimalDigitsCount(), MidpointRounding.ToZero);
     }
 }
