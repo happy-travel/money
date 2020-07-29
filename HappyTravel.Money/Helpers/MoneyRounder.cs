@@ -1,5 +1,6 @@
 using System;
 using HappyTravel.Money.Enums;
+using HappyTravel.Money.Extensions;
 using HappyTravel.Money.Models;
 
 namespace HappyTravel.Money.Helpers
@@ -14,7 +15,7 @@ namespace HappyTravel.Money.Helpers
             => Ceil(target, Enum.Parse<Currencies>(currency));
         
         public static decimal Ceil(decimal target, Currencies currency) 
-            => Math.Round(target, CurrencyProperties.GetDecimalDigitsCount(currency), MidpointRounding.AwayFromZero);
+            => Math.Round(target, currency.GetDecimalDigitsCount(), MidpointRounding.AwayFromZero);
         
         
         public static MoneyAmount Truncate(MoneyAmount moneyAmount) 
@@ -26,6 +27,6 @@ namespace HappyTravel.Money.Helpers
         
         
         public static decimal Truncate(decimal target, Currencies currency) 
-            => Math.Round(target, CurrencyProperties.GetDecimalDigitsCount(currency), MidpointRounding.ToZero);
+            => Math.Round(target, currency.GetDecimalDigitsCount(), MidpointRounding.ToZero);
     }
 }

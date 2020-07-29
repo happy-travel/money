@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using HappyTravel.Money.Enums;
 
-namespace HappyTravel.Money.Helpers
+namespace HappyTravel.Money.Extensions
 {
-    public static class CurrencyProperties
+    public static class CurrencyExtensions
     {
-        public static int GetDecimalDigitsCount(Currencies currency) => CurrencyDecimalDigits[currency];
+        public static int GetDecimalDigitsCount(this Currencies currency) => CurrencyDecimalDigits[currency];
         
         private static readonly Dictionary<Currencies, int> CurrencyDecimalDigits = new Dictionary<Currencies, int>
         {
