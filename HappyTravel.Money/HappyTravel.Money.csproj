@@ -2,13 +2,13 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.1</TargetFramework>
-        <PackageVersion>0.0.3.1</PackageVersion>
+        <PackageVersion>0.0.3.2</PackageVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>Hasmik Harutyunyan, Oleg Konovalov, Vadim Mingazhev, Kirill Taran</Authors>
         <Description>Common package to work with money: ceiling, formatting, models</Description>
         <PackageProjectUrl>https://github.com/happy-travel/takeda</PackageProjectUrl>
         <RepositoryUrl>https://github.com/happy-travel/takeda</RepositoryUrl>
-        <PackageReleaseNotes>Added public method to get currency digits count</PackageReleaseNotes>
+        <PackageReleaseNotes>Removed formatter</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
