@@ -8,7 +8,7 @@
         <Description>Common package to work with money: ceiling, formatting, models</Description>
         <PackageProjectUrl>https://github.com/happy-travel/takeda</PackageProjectUrl>
         <RepositoryUrl>https://github.com/happy-travel/takeda</RepositoryUrl>
-        <PackageReleaseNotes>REmoved formatter</PackageReleaseNotes>
+        <PackageReleaseNotes>Removed formatter</PackageReleaseNotes>
     </PropertyGroup>
 
     <ItemGroup>
