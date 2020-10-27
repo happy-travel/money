@@ -9,6 +9,7 @@
         <PackageProjectUrl>https://github.com/happy-travel/takeda</PackageProjectUrl>
         <RepositoryUrl>https://github.com/happy-travel/takeda</RepositoryUrl>
         <PackageReleaseNotes>Removed formatter</PackageReleaseNotes>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>

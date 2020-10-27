@@ -1,22 +1,133 @@
+#nullable enable
+using System;
 using HappyTravel.Money.Enums;
+using Newtonsoft.Json;
 
 namespace HappyTravel.Money.Models
 {
     public readonly struct MoneyAmount
     {
-        public MoneyAmount(decimal amount, Currencies currency)
+        [JsonConstructor]
+        public MoneyAmount(in decimal amount, Currencies currency)
         {
             Amount = amount;
             Currency = currency;
         }
         
+
         public void Deconstruct(out decimal amount, out Currencies currency)
         {
             amount = Amount;
             currency = Currency;
         }
 
+
+        public static MoneyAmount operator +(in MoneyAmount a) => a;
+
+
+        public static MoneyAmount operator -(in MoneyAmount a) => new MoneyAmount(-a.Amount, a.Currency);
+
+
+        public static MoneyAmount operator +(in MoneyAmount a, in MoneyAmount b)
+        {
+            if (a.Currency != b.Currency)
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return new MoneyAmount(a.Amount + b.Amount, a.Currency);
+        }
+
+
+        public static MoneyAmount operator -(in MoneyAmount a, in MoneyAmount b)
+        {
+            if (a.Currency != b.Currency)
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return new MoneyAmount(a.Amount - b.Amount, a.Currency);
+        }
+
+
+        public static MoneyAmount operator *(in MoneyAmount a, in MoneyAmount b)
+        {
+            if (a.Currency != b.Currency)
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return new MoneyAmount(a.Amount * b.Amount, a.Currency);
+        }
+
+
+        public static MoneyAmount operator /(in MoneyAmount a, in MoneyAmount b)
+        {
+            if (a.Currency != b.Currency)
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return new MoneyAmount(a.Amount / b.Amount, a.Currency);
+        }
+
+
+        public static MoneyAmount operator %(in MoneyAmount a, in MoneyAmount b)
+        {
+            if (a.Currency != b.Currency)
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return new MoneyAmount(a.Amount % b.Amount, a.Currency);
+        }
+
+
+        public static bool operator <(in MoneyAmount a, in MoneyAmount b)
+        {
+            if (a.Currency != b.Currency)
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return a.Amount < b.Amount;
+        }
+
+
+        public static bool operator <=(in MoneyAmount a, in MoneyAmount b)
+        {
+            if (a.Currency != b.Currency)
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return a.Amount <= b.Amount;
+        }
+
+
+        public static bool operator >=(in MoneyAmount a, in MoneyAmount b)
+        {
+            if (a.Currency != b.Currency)
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return a.Amount >= b.Amount;
+        }
+
+
+        public static bool operator >(in MoneyAmount a, in MoneyAmount b)
+        {
+            if (a.Currency != b.Currency)
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return a.Amount > b.Amount;
+        }
+
+
+        public static bool operator ==(in MoneyAmount a, in MoneyAmount b) => a.Equals(b);
+
+
+        public static bool operator !=(in MoneyAmount a, in MoneyAmount b) => !a.Equals(b);
+
+
+        public override bool Equals(object? obj) => obj is MoneyAmount other && Equals(in other);
+
+
+        public bool Equals(in MoneyAmount other) => (Amount, Currency).Equals((other.Amount, other.Currency));
+
+
+        public override int GetHashCode() => (Amount, Currency).GetHashCode();
+
+
         public decimal Amount { get; }
         public Currencies Currency { get; }
+
+
+        private const string CurrencyMismatchError = "The operation may be performed only on MoneyAmounts of the same currency.";
     }
 }
