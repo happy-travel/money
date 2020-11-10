@@ -5,20 +5,13 @@ using Newtonsoft.Json;
 
 namespace HappyTravel.Money.Models
 {
-    public readonly struct MoneyAmount
+    public readonly struct MoneyAmount : IComparable, IComparable<MoneyAmount>
     {
         [JsonConstructor]
         public MoneyAmount(in decimal amount, Currencies currency)
         {
             Amount = amount;
             Currency = currency;
-        }
-        
-
-        public void Deconstruct(out decimal amount, out Currencies currency)
-        {
-            amount = Amount;
-            currency = Currency;
         }
 
 
@@ -113,6 +106,28 @@ namespace HappyTravel.Money.Models
 
 
         public static bool operator !=(in MoneyAmount a, in MoneyAmount b) => !a.Equals(b);
+
+
+        public int CompareTo(object? obj)
+            => obj is null
+                ? 1
+                : CompareTo((MoneyAmount) obj);
+
+
+        public int CompareTo(MoneyAmount other)
+        {
+            if (!Currency.Equals(other.Currency))
+                throw new ArgumentException(CurrencyMismatchError);
+
+            return Amount.CompareTo(other.Amount);
+        }
+
+
+        public void Deconstruct(out decimal amount, out Currencies currency)
+        {
+            amount = Amount;
+            currency = Currency;
+        }
 
 
         public override bool Equals(object? obj) => obj is MoneyAmount other && Equals(in other);
