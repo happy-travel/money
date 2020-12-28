@@ -1,13 +1,11 @@
 #nullable enable
 using System;
 using HappyTravel.Money.Enums;
-using Newtonsoft.Json;
 
 namespace HappyTravel.Money.Models
 {
     public readonly struct MoneyAmount : IComparable, IComparable<MoneyAmount>
     {
-        [JsonConstructor]
         public MoneyAmount(in decimal amount, Currencies currency)
         {
             Amount = amount;
