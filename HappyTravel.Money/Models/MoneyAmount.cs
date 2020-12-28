@@ -139,8 +139,8 @@ namespace HappyTravel.Money.Models
         public override int GetHashCode() => (Amount, Currency).GetHashCode();
 
 
-        public decimal Amount { get; }
-        public Currencies Currency { get; }
+        public decimal Amount { get; init; }
+        public Currencies Currency { get; init; }
 
 
         private const string CurrencyMismatchError = "The operation may be performed only on MoneyAmounts of the same currency.";
