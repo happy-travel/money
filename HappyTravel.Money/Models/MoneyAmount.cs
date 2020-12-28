@@ -1,13 +1,11 @@
 #nullable enable
 using System;
 using HappyTravel.Money.Enums;
-using Newtonsoft.Json;
 
 namespace HappyTravel.Money.Models
 {
     public readonly struct MoneyAmount : IComparable, IComparable<MoneyAmount>
     {
-        [JsonConstructor]
         public MoneyAmount(in decimal amount, Currencies currency)
         {
             Amount = amount;
@@ -139,8 +137,8 @@ namespace HappyTravel.Money.Models
         public override int GetHashCode() => (Amount, Currency).GetHashCode();
 
 
-        public decimal Amount { get; }
-        public Currencies Currency { get; }
+        public decimal Amount { get; init; }
+        public Currencies Currency { get; init; }
 
 
         private const string CurrencyMismatchError = "The operation may be performed only on MoneyAmounts of the same currency.";

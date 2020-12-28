@@ -1,20 +1,16 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Authors>Hasmik Harutyunyan, Oleg Konovalov, Vadim Mingazhev, Kirill Taran</Authors>
         <Description>Added an implementation of IComparable</Description>
         <PackageProjectUrl>https://github.com/happy-travel/money</PackageProjectUrl>
         <RepositoryUrl>https://github.com/happy-travel/money</RepositoryUrl>
-        <PackageReleaseNotes>Updated to .Net 5</PackageReleaseNotes>
+        <PackageReleaseNotes>Drop support 3.1 target framework; added initial properties</PackageReleaseNotes>
         <Nullable>enable</Nullable>
-        <Version>1.1.0</Version>
+        <Version>1.2.0</Version>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
-
-    <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-    </ItemGroup>
 
 </Project>
