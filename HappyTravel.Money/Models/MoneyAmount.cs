@@ -1,11 +1,13 @@
 #nullable enable
 using System;
+using System.Text.Json.Serialization;
 using HappyTravel.Money.Enums;
 
 namespace HappyTravel.Money.Models
 {
     public readonly struct MoneyAmount : IComparable, IComparable<MoneyAmount>
     {
+        [JsonConstructor]
         public MoneyAmount(in decimal amount, Currencies currency)
         {
             Amount = amount;

@@ -8,7 +8,7 @@
         <RepositoryUrl>https://github.com/happy-travel/money</RepositoryUrl>
         <PackageReleaseNotes>Drop support 3.1 target framework; added initial properties</PackageReleaseNotes>
         <Nullable>enable</Nullable>
-        <Version>1.2.0</Version>
+        <Version>1.2.1</Version>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>
