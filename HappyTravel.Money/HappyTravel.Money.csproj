@@ -6,9 +6,9 @@
         <Description>Added an implementation of IComparable</Description>
         <PackageProjectUrl>https://github.com/happy-travel/money</PackageProjectUrl>
         <RepositoryUrl>https://github.com/happy-travel/money</RepositoryUrl>
-        <PackageReleaseNotes>Drop support 3.1 target framework; added initial properties</PackageReleaseNotes>
+        <PackageReleaseNotes>Convert struct to record</PackageReleaseNotes>
         <Nullable>enable</Nullable>
-        <Version>1.2.1</Version>
+        <Version>1.3.0</Version>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <TargetFramework>net5.0</TargetFramework>
     </PropertyGroup>

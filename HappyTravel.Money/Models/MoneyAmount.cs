@@ -5,20 +5,17 @@ using HappyTravel.Money.Enums;
 
 namespace HappyTravel.Money.Models
 {
-    public readonly struct MoneyAmount : IComparable, IComparable<MoneyAmount>
+    public record MoneyAmount
     {
         [JsonConstructor]
-        public MoneyAmount(in decimal amount, Currencies currency)
-        {
-            Amount = amount;
-            Currency = currency;
-        }
+        public MoneyAmount(in decimal amount, Currencies currency) 
+            => (Amount, Currency) = (amount, currency);
 
 
         public static MoneyAmount operator +(in MoneyAmount a) => a;
 
 
-        public static MoneyAmount operator -(in MoneyAmount a) => new MoneyAmount(-a.Amount, a.Currency);
+        public static MoneyAmount operator -(in MoneyAmount a) => new (-a.Amount, a.Currency);
 
 
         public static MoneyAmount operator +(in MoneyAmount a, in MoneyAmount b)
@@ -102,12 +99,6 @@ namespace HappyTravel.Money.Models
         }
 
 
-        public static bool operator ==(in MoneyAmount a, in MoneyAmount b) => a.Equals(b);
-
-
-        public static bool operator !=(in MoneyAmount a, in MoneyAmount b) => !a.Equals(b);
-
-
         public int CompareTo(object? obj)
             => obj is null
                 ? 1
@@ -121,22 +112,6 @@ namespace HappyTravel.Money.Models
 
             return Amount.CompareTo(other.Amount);
         }
-
-
-        public void Deconstruct(out decimal amount, out Currencies currency)
-        {
-            amount = Amount;
-            currency = Currency;
-        }
-
-
-        public override bool Equals(object? obj) => obj is MoneyAmount other && Equals(in other);
-
-
-        public bool Equals(in MoneyAmount other) => (Amount, Currency).Equals((other.Amount, other.Currency));
-
-
-        public override int GetHashCode() => (Amount, Currency).GetHashCode();
 
 
         public decimal Amount { get; init; }
