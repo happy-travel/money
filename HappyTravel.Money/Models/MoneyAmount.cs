@@ -26,6 +26,10 @@ namespace HappyTravel.Money.Models
 
             return new MoneyAmount(a.Amount + b.Amount, a.Currency);
         }
+        
+        
+        public static MoneyAmount operator +(in MoneyAmount a, decimal b) 
+            => new (a.Amount + b, a.Currency);
 
 
         public static MoneyAmount operator -(in MoneyAmount a, in MoneyAmount b)
@@ -35,6 +39,10 @@ namespace HappyTravel.Money.Models
 
             return new MoneyAmount(a.Amount - b.Amount, a.Currency);
         }
+        
+        
+        public static MoneyAmount operator -(in MoneyAmount a, decimal b) 
+            => new (a.Amount - b, a.Currency);
 
 
         public static MoneyAmount operator *(in MoneyAmount a, in MoneyAmount b)
@@ -44,6 +52,10 @@ namespace HappyTravel.Money.Models
 
             return new MoneyAmount(a.Amount * b.Amount, a.Currency);
         }
+        
+        
+        public static MoneyAmount operator *(in MoneyAmount a, decimal b) 
+            => new (a.Amount * b, a.Currency);
 
 
         public static MoneyAmount operator /(in MoneyAmount a, in MoneyAmount b)
@@ -53,6 +65,10 @@ namespace HappyTravel.Money.Models
 
             return new MoneyAmount(a.Amount / b.Amount, a.Currency);
         }
+        
+        
+        public static MoneyAmount operator /(in MoneyAmount a, decimal b) 
+            => new (a.Amount / b, a.Currency);
 
 
         public static MoneyAmount operator %(in MoneyAmount a, in MoneyAmount b)
@@ -62,6 +78,10 @@ namespace HappyTravel.Money.Models
 
             return new MoneyAmount(a.Amount % b.Amount, a.Currency);
         }
+        
+        
+        public static MoneyAmount operator %(in MoneyAmount a, decimal b) 
+            => new (a.Amount % b, a.Currency);
 
 
         public static bool operator <(in MoneyAmount a, in MoneyAmount b)
