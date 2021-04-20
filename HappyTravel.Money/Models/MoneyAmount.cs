@@ -16,7 +16,7 @@ namespace HappyTravel.Money.Models
         public static MoneyAmount operator +(in MoneyAmount a) => a;
 
 
-        public static MoneyAmount operator -(in MoneyAmount a) => new MoneyAmount(-a.Amount, a.Currency);
+        public static MoneyAmount operator -(in MoneyAmount a) => new (-a.Amount, a.Currency);
 
 
         public static MoneyAmount operator +(in MoneyAmount a, in MoneyAmount b)
