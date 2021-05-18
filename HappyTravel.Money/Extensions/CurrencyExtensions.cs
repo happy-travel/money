@@ -12,7 +12,10 @@ namespace HappyTravel.Money.Extensions
             {Currencies.AED, 2},
             {Currencies.EUR, 2},
             {Currencies.SAR, 2},
-            {Currencies.USD, 2}
+            {Currencies.USD, 2},
+            {Currencies.CNY, 2},
+            {Currencies.GBP, 2},
+            {Currencies.BHD, 2}
         };
     }
 }
