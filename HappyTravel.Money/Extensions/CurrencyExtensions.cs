@@ -6,7 +6,7 @@ namespace HappyTravel.Money.Extensions
     public static class CurrencyExtensions
     {
         public static int GetDecimalDigitsCount(this Currencies currency) => CurrencyDecimalDigits[currency];
-        
+
         private static readonly Dictionary<Currencies, int> CurrencyDecimalDigits = new Dictionary<Currencies, int>
         {
             {Currencies.AED, 2},
@@ -15,7 +15,8 @@ namespace HappyTravel.Money.Extensions
             {Currencies.USD, 2},
             {Currencies.CNY, 2},
             {Currencies.GBP, 2},
-            {Currencies.BHD, 2}
+            {Currencies.BHD, 2},
+            {Currencies.THB, 2}
         };
     }
 }
