@@ -12,6 +12,7 @@ namespace HappyTravel.Money.Enums
         SAR = 4,
         CNY = 5,
         GBP = 6,
-        BHD = 7
+        BHD = 7,
+        THB = 8
     }
 }
